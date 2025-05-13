@@ -1,5 +1,4 @@
 const express = require('express');
-require("pg");
 let cors = require('cors');
 let sqlite3 = require('sqlite3').verbose();
 let { open } = require('sqlite');
