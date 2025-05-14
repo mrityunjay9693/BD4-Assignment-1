@@ -9,6 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 let db;
+const path = require('path');
 
 (async () => {
   db = await open({
@@ -16,6 +17,9 @@ let db;
     driver: sqlite3.Database,
   });
 })();
+
+console.log("Database path:", path.resolve('./bd4_assignment1_database.sqlite'));
+
 /**
  * Exercise 1: Get All Restaurants
  * Objective: Fetch all restaurants from the database.
@@ -283,6 +287,12 @@ app.get('/dishes/sort-by-price', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log('Server running at port 3000');
-});
+app.get("/", (req,res) => {
+  return res.status(200).json("WELCOME");
+})
+
+module.exports = app;
+
+// app.listen(PORT, () => {
+//   console.log('Server running at port 3000');
+// });
